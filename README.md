@@ -1,6 +1,5 @@
 # :bird: pterodactyl-installer
 
-![Test Panel](https://github.com/thebublik2013/installer/actions/workflows/panel.yml/badge.svg)
 ![Test Wings](https://github.com/thebublik2013/installer/actions/workflows/wings.yml/badge.svg)
 ![Shellcheck](https://github.com/thebublik2013/installer/actions/workflows/shellcheck.yml/badge.svg)
 [![License: Apache-2.0 license](https://img.shields.io/github/license/thebublik2013/installer)](LICENSE)
