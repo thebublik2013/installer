@@ -29,6 +29,7 @@ set -e
 ######################################################################################
 
 export GITHUB_SOURCE="master"
+export CONFIG_COMMAND="cd /etc/pterodactyl"
 export GITHUB_BASE_URL="https://raw.githubusercontent.com/pterodactyl-installer/pterodactyl-installer"
 export CONFIGURE_FIREWALL=true
 export CONFIGURE_DBHOST=true
