@@ -20,6 +20,9 @@ fi
 
 CONFIG_COMMAND="${CONFIG_COMMAND:-generated_token}"
 
+CONFIGURE_SWAP="${CONFIGURE_SWAP:-true}"
+SWAP_SIZE="${SWAP_SIZE:-16}"
+
 INSTALL_MARIADB="${INSTALL_MARIADB:-false}"
 
 # firewall
@@ -106,6 +109,22 @@ ptdl_dl() {
   $CONFIG_COMMAND
 
   success "Pterodactyl Wings downloaded successfully"
+}
+
+swapc() {
+  echo "* Configuring swap memory.. "
+
+  sudo fallocate -l "$SWAP_SIZE"G /swapfile
+  ls -lh /swapfile
+  sudo chmod 600 /swapfile
+  ls -lh /swapfile
+  sudo mkswap /swapfile
+  sudo swapon /swapfile
+  sudo swapon --show
+  sudo cp /etc/fstab /etc/fstab.bak
+  echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+  success "Swap memory configured successfully"
 }
 
 systemd_file() {

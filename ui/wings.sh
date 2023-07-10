@@ -21,6 +21,9 @@ fi
 # Configure wings
 export CONFIG_COMMAND=""
 
+export CONFIGURE_SWAP=true
+export SWAP_SIZE=""
+
 # Install mariadb
 export INSTALL_MARIADB=false
 
@@ -81,6 +84,20 @@ ask_database_external() {
     [ "$CONFIGURE_FIREWALL" == true ] && ask_database_firewall
     return 0
   fi
+}
+
+ask_swap() {
+  echo -n "* Do you want to configure swap? (y/N): "
+  read -r CONFIRM_SWAP
+
+  if [[ "$CONFIRM_SWAP" =~ [Yy] ]]; then
+    echo -n "* Enter swap size: "
+    read -r CONFIRM_SWAP_SIZE
+    if [ "$CONFIRM_SWAP_SIZE" == "" ]; then
+      SWAP_SIZE="1"
+    else
+      SWAP_SIZE="$CONFIRM_SWAP_SIZE"
+  fi0
 }
 
 ask_database_firewall() {
